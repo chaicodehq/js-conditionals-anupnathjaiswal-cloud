@@ -31,5 +31,72 @@
  * @returns {{ season: string, activity: string } | null}
  */
 export function getSeasonActivity(month, temperature) {
-  // Your code here
+  if (month < 1 || month > 12) return null;
+
+  // const season = {
+  //     Winter: [12, 1, 2],
+  //     Spring: [3, 4, 5],
+  //     Summer: [6, 7, 8],
+  //     Autumn: [9, 10, 11],
+  // };
+
+  // if (season[month] === "Winter" && temperature < 0) {
+  //     return { season: season[month], activity: "skiing" };
+  // }
+  // if (season[month] === "Winter" && temperature >= 0) {
+  //     return { season: season[month], activity: "ice skating" };
+  // }
+  // if (season[month] === "Spring" && temperature > 20) {
+  //     return { season: season[month], activity: "hiking" };
+  // }
+  // if (season[month] === "Spring" && temperature <= 20) {
+  //     return { season: season[month], activity: "museum visit" };
+  // }
+  // if (season[month] === "Summer" && temperature > 35) {
+  //     return { season: season[month], activity: "swimming" };
+  // }
+  // if (season[month] === "Summer" && temperature <= 35) {
+  //     return { season: season[month], activity: "cycling" };
+  // }
+  // if (season[month] === "Autumn" && temperature > 15) {
+  //     return { season: season[month], activity: "nature walk" };
+  // }
+  // if (season[month] === "Autumn" && temperature <= 15) {
+  //     return { season: season[month], activity: "reading at a cafe" };
+  // }
+
+  let season;
+
+  if ([12, 1, 2].includes(month)) season = "Winter";
+  else if ([3, 4, 5].includes(month)) season = "Spring";
+  else if ([6, 7, 8].includes(month)) season = "Summer";
+  else season = "Autumn"; // 9, 10, 11
+
+  if (season === "Winter") {
+      return {
+          season,
+          activity: temperature < 0 ? "skiing" : "ice skating",
+      };
+  }
+
+  if (season === "Spring") {
+      return {
+          season,
+          activity: temperature > 20 ? "hiking" : "museum visit",
+      };
+  }
+
+  if (season === "Summer") {
+      return {
+          season,
+          activity: temperature > 35 ? "swimming" : "cycling",
+      };
+  }
+
+  // Autumn
+  return {
+      season,
+      activity: temperature > 15 ? "nature walk" : "reading at a cafe",
+  };
+
 }
